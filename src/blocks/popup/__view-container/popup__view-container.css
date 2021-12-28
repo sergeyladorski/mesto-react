@@ -1,0 +1,5 @@
+.popup__view-container {
+  max-width: 75vw;
+  width: max-content;
+  position: relative;
+}

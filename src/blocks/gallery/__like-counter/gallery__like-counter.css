@@ -1,0 +1,9 @@
+.gallery__like-counter {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.23;
+  text-align: center;
+  visibility: hidden;
+}

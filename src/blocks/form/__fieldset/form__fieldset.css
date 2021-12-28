@@ -1,0 +1,15 @@
+.form__fieldset {
+  border: none;
+  margin: 0;
+  margin-bottom: 48px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+@media screen and (max-width: 767px) {
+  .form__fieldset {
+    margin-bottom: 45px;
+  }
+}

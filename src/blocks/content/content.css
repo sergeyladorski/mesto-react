@@ -1,0 +1,21 @@
+.content {
+    max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+@media screen and (min-width: 425px) and (max-width: 1279px) {
+    .content {
+      max-width: 90vw;
+    }
+  }
+  
+  @media screen and (max-width: 424px) {
+    .content {
+      max-width: 282px;
+    }
+  }
+  

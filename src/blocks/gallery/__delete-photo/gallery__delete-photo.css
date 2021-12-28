@@ -1,0 +1,18 @@
+.gallery__delete-photo {
+    min-width: 18px;
+    height: 19px;
+    padding: 0;
+    border: none;
+    background: none;
+    background-image: url(../../../images/icons/trash-icon.svg);
+    background-size: 18px 19px;
+    cursor: pointer;
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    visibility: hidden;
+  }
+  
+  .gallery__delete-photo:hover {
+    opacity: 0.6;
+  }
