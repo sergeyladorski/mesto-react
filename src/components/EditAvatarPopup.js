@@ -3,7 +3,7 @@ import PopupWithForm from "./PopupWithForm";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
     const avatarRef = React.useRef();
-
+    //reset inputs on close
     function handleClosePopup() {
         onClose();
         setTimeout(() => {

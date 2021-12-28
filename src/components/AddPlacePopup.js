@@ -12,13 +12,14 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
     function handleLinkChange(e) {
         setLink(e.target.value);
     }
+    //reset inputs on close
     function handleClosePopup() {
         onClose();
         setTimeout(() => {
-          setName("");
-          setLink("");
+            setName("");
+            setLink("");
         }, 200);
-      }
+    }
     function handleSubmit(e) {
         e.preventDefault();
         onAddPlace({ name, link });
