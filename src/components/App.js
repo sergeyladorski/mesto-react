@@ -27,39 +27,33 @@ function App() {
   function handleUpdateUser(userInfo) {
     api.setUserInfo(userInfo)
       .then((newUserInfo) => {
-        setCurrentUser(newUserInfo)
+        setCurrentUser(newUserInfo);
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => {
-        closeAllPopups();
-      });
   }
    //update user avatar
   function handleUpdateAvatar(avatar) {
     api.setUserAvatar(avatar)
       .then((newAvatar) => {
-        setCurrentUser(newAvatar)
+        setCurrentUser(newAvatar);
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => {
-        closeAllPopups();
-      });
   }
   function handleAddPlaceSubmit(card) {
     api.postCard(card)
       .then((newCard) => {
         setCards([newCard, ...cards]);
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => {
-        closeAllPopups();
-      });
   }
   //current card
   const [selectedCard, setSelectedCard] = React.useState({});
@@ -79,7 +73,10 @@ function App() {
     setisEditAvatarPopupOpen(false);
     // setIsConfirmPopupOpen(false);
     setisImagePopupOpen(false);
-    setSelectedCard({})
+    setTimeout(() => {
+      setSelectedCard({});
+  }, 700);
+    
   }
   //set user info & cards
   const [currentUser, setCurrentUser] = React.useState({});

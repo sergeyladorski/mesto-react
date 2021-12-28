@@ -1,7 +1,7 @@
 function ImagePopup({ card, name, isOpen, onClose }) {
     return (
         <div
-            className={`popup ${card && isOpen ? 'popup_opened' : ''}`}
+            className={`popup ${isOpen && 'popup_opened'}`}
             id={`popup-${name}`}
         >
             <figure className="popup__view-container">
