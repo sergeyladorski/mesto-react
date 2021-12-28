@@ -12,9 +12,17 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
     function handleLinkChange(e) {
         setLink(e.target.value);
     }
+    function handleClosePopup() {
+        onClose();
+        setTimeout(() => {
+          setName("");
+          setLink("");
+        }, 200);
+      }
     function handleSubmit(e) {
         e.preventDefault();
-        onAddPlace({ name, link })
+        onAddPlace({ name, link });
+        handleClosePopup();
     };
 
     return (
@@ -23,7 +31,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
             title="Новое место"
             defaultValue="Создать"
             isOpen={isOpen}
-            onCloce={onClose}
+            onCloce={handleClosePopup}
             onSubmit={handleSubmit}
         >
             <label className="form__input-label" htmlFor="place">

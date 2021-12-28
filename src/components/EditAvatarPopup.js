@@ -4,9 +4,16 @@ import PopupWithForm from "./PopupWithForm";
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
     const avatarRef = React.useRef();
 
+    function handleClosePopup() {
+        onClose();
+        setTimeout(() => {
+            (avatarRef.current.value = "");
+        }, 200);
+    }
     function handleSubmit(e) {
         e.preventDefault();
         onUpdateAvatar(avatarRef.current.value);
+        handleClosePopup();
     }
 
     return (
@@ -15,7 +22,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
             title="Обновить аватар"
             defaultValue="Сохранить"
             isOpen={isOpen}
-            onCloce={onClose}
+            onCloce={handleClosePopup}
             onSubmit={handleSubmit}
         >
             <label className="form__input-label" htmlFor="avatar">
