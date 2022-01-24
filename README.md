@@ -55,7 +55,7 @@
 
 Перейти на страницу проекта (на данный момент недоступна в связи с ведущимися работами по разработке приложения).
 
-Перейти на [страницу проекта](https://sergeyladorski.github.io/mesto-react/) .
+Перейти на [страницу проекта](https://sergeyladorski.github.io/mesto-react/).  
 Больше моих проектов на [GitHub](https://github.com/sergeyladorski).
 
 **Sergey Ladorski**
