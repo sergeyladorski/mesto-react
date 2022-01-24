@@ -1,8 +1,7 @@
 import { React, useEffect } from 'react';
 
-export default function PopupWithForm({
-    name, title, defaultValue, children,
-    isOpen, onClose, closeAllPopups, onChange, onSubmit }) {
+export default function ConfirmPopup({
+    name, title, defaultValue, isOpen, onClose, closeAllPopups, onConfirm, card }) {
 
     useEffect(() => {
         if (!isOpen) return;
@@ -23,6 +22,11 @@ export default function PopupWithForm({
         }
     };
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        onConfirm(card);
+    };
+
     return (
         <div className={`popup ${isOpen && 'popup_opened'}`}
             id={`popup-${name}`}
@@ -38,26 +42,16 @@ export default function PopupWithForm({
                     name={`form-${name}`}
                     className='form'
                     id={`form-${name}`}
-                    // noValidate
-                    autoComplete='off'
-                    onChange={onChange}
-                    onSubmit={onSubmit}
+                    onSubmit={handleSubmit}
                 >
                     <h2 className='form__heading'>{title}</h2>
-
-                    <fieldset className='form__fieldset'>
-                        {children}
-                    </fieldset>
-
-                    <fieldset className='form__submit'>
-                        <input
-                            type='submit'
-                            value={defaultValue}
-                            data-value={defaultValue}
-                            className='form__save'
-                            onClick={closeAllPopups}
-                        />
-                    </fieldset>
+                    <input
+                        type='submit'
+                        value={defaultValue}
+                        data-value={defaultValue}
+                        className='form__save'
+                        onClick={closeAllPopups}
+                    />
                 </form>
             </div>
         </div>

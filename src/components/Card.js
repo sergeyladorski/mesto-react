@@ -1,8 +1,8 @@
-import React from 'react';
+import {React, useContext} from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function Card({ card, onCardClick, onCardLike, onCardDelete }) {
-  const currentUser = React.useContext(CurrentUserContext);
+export default function Card({ card, onCardClick, onCardLike, onCardDeleteClick }) {
+  const currentUser = useContext(CurrentUserContext);
   const isOwn = card.owner._id === currentUser._id;
   const cardDeleteButtonClassName = (
     `gallery__delete-photo ${isOwn && 'gallery__delete-photo_active'}`
@@ -22,23 +22,24 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
     onCardLike(card);
   }
   function handleDeleteClick() {
-    onCardDelete(card)
+    // onCardDelete(card)
+    onCardDeleteClick(card)
   }
 
   return (
-    <li className="gallery__card">
+    <li className='gallery__card'>
       <img
         onClick={handleClick}
         src={card.link}
         alt={card.name}
-        className="gallery__photo"
+        className='gallery__photo'
       />
-      <button type="button"
+      <button type='button'
         className={cardDeleteButtonClassName} onClick={handleDeleteClick}></button>
-      <div className="gallery__photo-desc">
-        <h2 className="gallery__photo-title">{card.name}</h2>
-        <div className="gallery__like-container">
-          <button type="button" className={cardLikeButtonClassName} onClick={handleLikeClick}></button>
+      <div className='gallery__photo-desc'>
+        <h2 className='gallery__photo-title'>{card.name}</h2>
+        <div className='gallery__like-container'>
+          <button type='button' className={cardLikeButtonClassName} onClick={handleLikeClick}></button>
           <p className={cardLikeCounterClassName}>
             {card.likes.length}
           </p>
@@ -47,4 +48,3 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
     </li>
   )
 }
-export default Card;
