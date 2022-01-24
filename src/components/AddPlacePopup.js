@@ -1,10 +1,10 @@
-import React from "react";
-import PopupWithForm from "./PopupWithForm";
+import { React, useState, useEffect } from 'react';
+import PopupWithForm from './PopupWithForm';
 
-function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
+export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
 
-    const [name, setName] = React.useState("");
-    const [link, setLink] = React.useState("");
+    const [name, setName] = useState('');
+    const [link, setLink] = useState('');
 
     function handleNameChange(e) {
         setName(e.target.value);
@@ -13,59 +13,55 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         setLink(e.target.value);
     }
     //reset inputs on close
-    function handleClosePopup() {
-        onClose();
-        setTimeout(() => {
-            setName("");
-            setLink("");
-        }, 200);
-    }
+    useEffect(() => {
+        setName('');
+        setLink('');
+    }, [isOpen]);
+
     function handleSubmit(e) {
         e.preventDefault();
         onAddPlace({ name, link });
-        handleClosePopup();
     };
+
 
     return (
         <PopupWithForm
-            name="card"
-            title="Новое место"
-            defaultValue="Создать"
+            name='card'
+            title='Новое место'
+            defaultValue='Создать'
             isOpen={isOpen}
-            onCloce={handleClosePopup}
+            onClose={onClose}
             onSubmit={handleSubmit}
         >
-            <label className="form__input-label" htmlFor="place">
+            <label className='form__input-label' htmlFor='place'>
                 <input
-                    type="text"
-                    id="place"
-                    name="place"
-                    placeholder="Название"
-                    className="form__input"
+                    type='text'
+                    id='place'
+                    name='place'
+                    placeholder='Название'
+                    className='form__input'
                     required
-                    minLength="2"
-                    maxLength="30"
+                    minLength='2'
+                    maxLength='30'
                     onChange={handleNameChange}
                     value={name}
                 />
-                <span className="form__input-error" id="place-error"></span>
+                <span className='form__input-error' id='place-error'></span>
             </label>
 
-            <label className="form__input-label" htmlFor="source">
+            <label className='form__input-label' htmlFor='source'>
                 <input
-                    type="url"
-                    id="source"
-                    name="source"
-                    placeholder="Ссылка на картинку"
-                    className="form__input"
+                    type='url'
+                    id='source'
+                    name='source'
+                    placeholder='Ссылка на картинку'
+                    className='form__input'
                     required
                     onChange={handleLinkChange}
                     value={link}
                 />
-                <span className="form__input-error" id="source-error"></span>
+                <span className='form__input-error' id='source-error'></span>
             </label>
         </PopupWithForm>
     );
 }
-
-export default AddPlacePopup;

@@ -2,9 +2,9 @@ import React from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import Card from './Card';
 
-function Main({
+export default function Main({
     onEditAvatar, onEditProfile, onAddPlace,
-    cards, onCardClick, onCardLike, onCardDelete
+    cards, onCardClick, onCardLike, onCardDeleteClick
 }) {
     const currentUser = React.useContext(CurrentUserContext);
 
@@ -46,14 +46,14 @@ function Main({
                 ></button>
             </section>
 
-            <section className="gallery">
-                <ul aria-label="фото-галерея" className="gallery__list">
+            <section className='gallery'>
+                <ul aria-label='фото-галерея' className='gallery__list'>
                     {cards.map((card) => {
                         return (
                             <Card
                                 onCardClick={onCardClick}
                                 onCardLike={onCardLike}
-                                onCardDelete={onCardDelete}
+                                onCardDeleteClick={onCardDeleteClick}
                                 key={card._id}
                                 card={card}
                             />
@@ -64,5 +64,3 @@ function Main({
         </main>
     );
 }
-
-export default Main;
